@@ -4,6 +4,18 @@
 
 **UnitTesting** is a modern iOS Swift project demonstrating Clean Architecture and MVVM, with a strong focus on 100% unit test coverage for business logic and ViewModels. This project is designed as a reference for both beginners and experienced developers on how to structure, write, and maintain effective unit tests in Swift.
 
+A minimal example of a testable Swift Package with basic unit and integration tests.
+
+This repository demonstrates:
+
+- how to write clean, minimal unit tests using `XCTest`
+- how to structure a testable Swift Package
+- a simple integration test example to show how components work together
+
+The goal is to keep the base understandable for beginners without overengineering, while being clean enough to be appreciated by senior developers.
+
+No third-party dependencies. Just Swift and `XCTest`.
+
 ---
 
 ## Project Structure
