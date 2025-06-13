@@ -15,6 +15,6 @@ class MockExerciseRepository: ExerciseRepository {
   }
 
   func getAllExercises() -> [Exercise] {
-    return exercises
+    exercises
   }
 }
