@@ -218,6 +218,43 @@ func testAddDuplicateExerciseFails() {
 
 ---
 
+### 4. Integration Test
+
+**Why:**  
+Integration tests verify that all layers (Repository, UseCase, ViewModel) work together as expected. They ensure that the complete flow behaves correctly, not just isolated units.
+
+**How:**  
+
+- Use real implementations for all layers.
+- Test end-to-end scenarios (e.g., adding and fetching an exercise).
+
+**Example:**
+
+```swift
+// ExerciseFlowIntegrationTests.swift
+
+func test_add_and_fetch_exercise_flow() {
+    // Arrange: use real implementations
+    let repository = ExerciseRepositoryImpl()
+    let addUseCase = AddExerciseUseCaseImpl(repository: repository)
+    let getUseCase = GetExercisesUseCaseImpl(repository: repository)
+    let viewModel = ExerciseViewModel(addExerciseUseCase: addUseCase, getExercisesUseCase: getUseCase)
+
+    // Act: add an exercise via ViewModel
+    let addResult = viewModel.addExercise(name: "Push Ups", duration: 30)
+    viewModel.fetchExercises()
+    let exercises = viewModel.exercises
+
+    // Assert: verify that the exercise was added and fetched correctly
+    XCTAssertTrue(addResult)
+    XCTAssertEqual(exercises.count, 1)
+    XCTAssertEqual(exercises.first?.name, "Push Ups")
+    XCTAssertEqual(exercises.first?.duration, 30)
+}
+```
+
+---
+
 ## How to Run Tests
 
 1. Open the project in Xcode.
